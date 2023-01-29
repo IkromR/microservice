@@ -1,0 +1,97 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "endpoints": [
+        {
+            "endpoint": "/v1/loyaltyEP",
+            "method": "GET",
+            "backend": [
+            {
+                  "url_pattern": "/v1/loyalty",
+                  "method": "GET",
+                  "host": [
+                    "http://loyalty/"
+                  ],
+                  "is_collection":true,
+                  "mapping": {
+                    "collection": "loyalty"
+                  }
+
+            }]
+        },
+        {
+            "endpoint": "/v1/loyaltyEP/{id}",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+            {
+                  "encoding": "no-op",
+                  "url_pattern": "/v1/loyalty/{id}",
+                  "method": "GET",
+                  "host": [
+                    "http://loyalty/"
+                  ]
+            }]
+        },
+        {
+            "endpoint": "/v1/productEP",
+            "method": "GET",
+            "backend": [
+            {
+                  "url_pattern": "/v1/product",
+                  "method": "GET",
+                  "host": [
+                    "http://product/"
+                  ],
+                  "is_collection":true,
+                  "mapping": {
+                    "collection": "product"
+                  }
+
+            }]
+        },
+        {
+            "endpoint": "/v1/productEP/{id}",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "backend": [
+            {
+                  "encoding": "no-op",
+                  "url_pattern": "/v1/product/{id}",
+                  "method": "GET",
+                  "host": [
+                    "http://product/"
+                  ]
+            }]
+        },
+        {
+            "endpoint": "/v1/data/",
+            "method": "GET",
+            "backend": [
+            {
+                "url_pattern": "/v1/product",
+                "method": "GET",
+                "host": [
+                  "http://product/"
+                ],
+                "is_collection":true,
+                "mapping": {
+                  "collection": "product"
+                }
+            },
+            {
+                "url_pattern": "/v1/loyalty",
+                "method": "GET",
+                "host": [
+                    "http://loyalty/"
+                ],
+                "is_collection":true,
+                "mapping": {
+                    "collection": "loyalty"
+                }
+          }]
+        }
+        
+    ],
+    "extra_config": {}
+}
